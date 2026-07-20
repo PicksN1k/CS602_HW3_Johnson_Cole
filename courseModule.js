@@ -12,6 +12,14 @@ export const lookupByCourseId =  async (id) => {
 	let result;
 
 	// Fill in the code
+	 result = await Course.findAll({
+        where: {
+            courseId: {
+                [Op.like]: id
+            }
+        },
+        include: Coordinator
+    });
 
 	return JSON.parse(JSON.stringify(result));
 };
@@ -21,6 +29,14 @@ export const lookupByCourseName = async (name) => {
 	let result ;
 
 	// Fill in the code
+	result = await Course.findAll({
+        where: {
+            courseName: {
+                [Op.like]: name
+            }
+        },
+        include: Coordinator
+    });
 
 	return JSON.parse(JSON.stringify(result));
 };
@@ -30,7 +46,10 @@ export const lookupByCoordinator =  async (id) => {
 	let result ;
 
 	// Fill in the code
-
+	result = await Coordinator.findByPk(id, {
+        include: Course
+    });
+	
 	return JSON.parse(JSON.stringify(result));
 };
 
