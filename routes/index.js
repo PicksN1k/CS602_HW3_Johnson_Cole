@@ -137,7 +137,7 @@ router.get('/describe/:id', async function(req, res) {
   if (!req.session.sessionData['courseDescrition'].includes(id))
       req.session.sessionData['courseDescrition'].push(id);
 
-  res.render('descriptionView', result);
+  res.render('courseDescriptionView', result);
 
 });
 
@@ -150,16 +150,19 @@ router.get('/coordinator/:id', async function(req, res) {
   if (!req.session.sessionData['lookupByCoordinator'].includes(id))
       req.session.sessionData['lookupByCoordinator'].push(id);
 
-  res.render('lookupByCoordinatorView', result);
+  res.render('coordinatorView', {
+    query: id,
+    coordinator: result
+});
 
 });
   
 router.get('/history', function(req, res) {
 
-  res.render('historyView', {
+  res.render('sessionView', {
     history: req.session.sessionData
   });
-
+  
 });
 
 export {router};
