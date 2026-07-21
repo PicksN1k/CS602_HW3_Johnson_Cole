@@ -1,3 +1,18 @@
-<h3>A Random Course</h3> 
+<h3>A Random Course</h3>
 
+{{#if courseId}}
 
+<ul>
+    <li>
+        {{courseId}} - {{courseName}}
+        (<a href="/coordinator/{{Coordinator.id}}">
+            Contact Prof. {{Coordinator.lastName}}
+        </a>)
+    </li>
+</ul>
+
+{{else}}
+
+<h3>404 - Not Found</h3>
+
+{{/if}}
