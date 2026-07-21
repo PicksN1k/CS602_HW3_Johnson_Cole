@@ -1,3 +1,20 @@
 <b>Coordinator Query </b>
-{{this.query}}
+{{query}}
+
 <p></p>
+
+{{#if coordinator}}
+
+<b>{{coordinator.fullName}}</b>
+
+<ul>
+{{#each coordinator.Courses}}
+    <li>{{courseId}} - {{courseName}}</li>
+{{/each}}
+</ul>
+
+{{else}}
+
+<h3>404 - Not Found</h3>
+
+{{/if}}
