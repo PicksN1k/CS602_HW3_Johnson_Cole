@@ -1,4 +1,30 @@
 <b>Course Id Query </b>
-{{this.query}}
+{{query}}
+
 <p></p>
 
+{{#if courses.length}}
+
+<div style="width:66%;">
+
+{{#each courses}}
+
+<b>Course: {{courseId}} - {{courseName}}</b>
+<p></p>
+
+Coordinator:
+<a href="/coordinator/{{Coordinator.id}}">
+    {{Coordinator.fullName}}
+</a>
+
+<hr>
+
+{{/each}}
+
+</div>
+
+{{else}}
+
+<h3>404 - Not Found</h3>
+
+{{/if}}
