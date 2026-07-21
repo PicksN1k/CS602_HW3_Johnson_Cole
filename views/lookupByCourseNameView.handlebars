@@ -8,7 +8,10 @@
 <ul>
 {{#each courses}}
     <li>
-        {{courseId}} - {{courseName}}
+        <a href="/describe/{{id}}">
+            {{courseId}}
+        </a>
+        - {{courseName}}
         (<a href="/coordinator/{{Coordinator.id}}">
             Contact Prof. {{Coordinator.lastName}}
         </a>)

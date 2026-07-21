@@ -9,7 +9,12 @@
 
 <ul>
 {{#each coordinator.Courses}}
-    <li>{{courseId}} - {{courseName}}</li>
+    <li>
+        <a href="/describe/{{id}}">
+            {{courseId}}
+        </a>
+        - {{courseName}}
+    </li>
 {{/each}}
 </ul>
 
