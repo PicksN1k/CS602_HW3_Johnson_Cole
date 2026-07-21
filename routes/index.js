@@ -55,16 +55,24 @@ router.post('/cid', async function(req, res) {
 
 
 router.get('/cid/:id', async function(req, res) {
+
   let id = req.params.id;
-  
-  // Fill in the code
   let result = await courseDB.lookupByCourseId(id);
+
   if (!req.session.sessionData['lookupByCourseId'].includes(encodeURIComponent(id)))
     req.session.sessionData['lookupByCourseId'].push(encodeURIComponent(id));
+
+  // Return JSON for API requests
+  if (req.accepts('json') && !req.accepts('html')) {
+    return res.json(result);
+  }
+
+  // Otherwise render the HTML page
   res.render('lookupByCourseIdView', {
     query: id,
     courses: result
   });
+
 });
 
 
