@@ -119,12 +119,19 @@ router.get('/cname/:name', async function(req, res) {
   let name = req.params.name;
   let result = await courseDB.lookupByCourseName(name);
 
-  if (!req.session.sessionData['lookupByCourseName'].includes(encodeURIComponent(name)))
-      req.session.sessionData['lookupByCourseName'].push(encodeURIComponent(name));
+  if (!req.session.sessionData['lookupByCourseName'].includes(encodeURIComponent(name))) {
+    req.session.sessionData['lookupByCourseName'].push(encodeURIComponent(name));
+  }
 
+  // Return JSON if requested (e.g., Postman)
+  if (req.get('Accept') && req.get('Accept').includes('application/json')) {
+    return res.json(result);
+  }
+
+  // Otherwise render the HTML page
   res.render('lookupByCourseNameView', {
-      query: name,
-      courses: result
+    query: name,
+    courses: result
   });
 
 });
