@@ -1,4 +1,33 @@
 <b>Course Name Query </b>
-{{this.query}}
+{{query}}
+
 <p></p>
 
+{{#if courses.length}}
+
+<table border="1">
+    <tr>
+        <th>Course Id</th>
+        <th>Course Name</th>
+        <th>Coordinator</th>
+    </tr>
+
+    {{#each courses}}
+    <tr>
+        <td>{{courseId}}</td>
+        <td>{{courseName}}</td>
+        <td>
+            <a href="/coordinator/{{Coordinator.id}}">
+                {{Coordinator.fullName}}
+            </a>
+        </td>
+    </tr>
+    {{/each}}
+
+</table>
+
+{{else}}
+
+<h3>404 - Not Found</h3>
+
+{{/if}}
