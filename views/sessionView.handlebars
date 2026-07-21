@@ -1,4 +1,31 @@
-<h3>Session history</h3>
+<h3>Session History</h3>
 
 <hr/>
 
+<b>Course ID Lookups</b>
+<ul>
+{{#each sessionData.lookupByCourseId}}
+    <li>{{this}}</li>
+{{/each}}
+</ul>
+
+<b>Course Name Lookups</b>
+<ul>
+{{#each sessionData.lookupByCourseName}}
+    <li>{{this}}</li>
+{{/each}}
+</ul>
+
+<b>Coordinator Lookups</b>
+<ul>
+{{#each sessionData.lookupByCoordinator}}
+    <li>{{this}}</li>
+{{/each}}
+</ul>
+
+<b>Course Description Lookups</b>
+<ul>
+{{#each sessionData.courseDescrition}}
+    <li>{{this}}</li>
+{{/each}}
+</ul>
